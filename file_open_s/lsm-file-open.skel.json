@@ -1,0 +1,1 @@
+{"bpf_skel":{"data_sections":[{"name":".rodata","variables":[{"name":"target_path","type":"char[40]"}]}],"maps":[{"ident":"rodata","mmaped":true,"name":"lsm_file.rodata"}],"obj_name":"lsm_file_open_bpf","progs":[{"attach":"lsm.s/file_open","link":true,"name":"deny_file_open"}]},"eunomia_version":"0.3.4"}
