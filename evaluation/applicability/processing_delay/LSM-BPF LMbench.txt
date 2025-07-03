@@ -1,0 +1,30 @@
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	56312	50642	76539
+1k	46439	40114	60133
+4k	43691	39882	57881
+10k	30345	28975	42850
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	55793	52516	76766
+1k	58279	39772	57358
+4k	42732	38491	59769
+10k	35628	28905	42187
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	57277	52017	76300
+1k	57143	39578	57926
+4k	54659	38889	60567
+10k	40554	29033	42695
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	54714	51207	76090
+1k	47892	39732	56230
+4k	43678	40217	58061
+10k	38767	28095	41713
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	5734	52155	76874
+1k	4272	38811	61779
+4k	4191	39781	62380
+10k	3268	31364	50939
+vagrant@vagrant:/usr/lib/lmbench/bin/x86_64-linux-gnu$ sudo ./lat_fs
+0k	57049	48127	70042
+1k	52072	38777	60037
+4k	43138	39244	61370
+10k	35342	28130	42668

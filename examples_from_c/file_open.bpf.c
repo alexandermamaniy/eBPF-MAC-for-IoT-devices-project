@@ -48,7 +48,7 @@ int STRNCMP (const char *s1, const char *s2, size_t n) {
 	return c1 - c2;
 }
 
-SEC("lsm/file_open_s")
+SEC("lsm/file_open_s__file_systems")
 int BPF_PROG(file_open, struct file *file, int mode) {
 	char buf[50];
 	struct qstr dname;
