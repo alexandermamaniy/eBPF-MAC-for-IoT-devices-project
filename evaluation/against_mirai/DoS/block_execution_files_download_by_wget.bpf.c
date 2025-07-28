@@ -68,7 +68,10 @@ int BPF_PROG(block_marked_exec, struct linux_binprm *bprm)
     return 0;
 }
 
+
 // Block chmod on marked inodes (created by wget)
+
+
 SEC("lsm.s/inode_setattr")
 int BPF_PROG(block_marked_chmod, struct dentry *dentry, struct iattr *attr)
 {

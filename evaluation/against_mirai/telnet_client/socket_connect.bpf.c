@@ -6,7 +6,7 @@
 
 #define EPERM 1
 #define MAX_PATH_LEN 256
-#define AF_INET 2
+// #define AF_INET 2
 
 
 const char telnet_exec[] = "/usr/bin/telnet";
@@ -33,7 +33,7 @@ int BPF_PROG(deny_bprm_check, struct linux_binprm *bprm)
 }
 
 
-
+/*
 SEC("lsm.s/socket_connect")
 int BPF_PROG(block_telnet_connect, struct socket *sock, struct sockaddr *address, int addrlen)
 {
@@ -47,5 +47,5 @@ int BPF_PROG(block_telnet_connect, struct socket *sock, struct sockaddr *address
     }
     return 0;
 }
-
+*/
 char LICENSE[] SEC("license") = "GPL";

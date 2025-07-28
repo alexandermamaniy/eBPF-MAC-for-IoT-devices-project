@@ -7,7 +7,7 @@
 #define EPERM 1
 #define MAX_PATH_LEN 256
 #define NUM_PATHS 2
-
+#define AF_INET 2
 
 const char restricted_paths[][MAX_PATH_LEN] = {
     "/etc/inetd.conf",
@@ -28,9 +28,11 @@ int BPF_PROG(deny_bprm_check, struct linux_binprm *bprm)
     if (bpf_core_read_str(buf, sizeof(buf), bprm->filename) < 0)
         return 0;
 
-    // bpf_printk("lsm: denying execute of %s", buf);
-    if (__builtin_memcmp(buf, telnet_service_exec, sizeof(telnet_service_exec) - 1) == 0)
+    if (__builtin_memcmp(buf, telnet_service_exec, sizeof(telnet_service_exec) - 1) == 0){
+        bpf_printk("bprm_check_security: denying execute of %s", buf);
         return -EPERM;
+    }
+
 
     return 0;
 }
@@ -49,12 +51,28 @@ int BPF_PROG(deny_file_open, struct file *file)
     #pragma unroll
     for (int i = 0; i < NUM_PATHS; i++) {
         if (__builtin_memcmp(buf, restricted_paths[i], __builtin_strlen(restricted_paths[i])) == 0) {
-            bpf_printk("lsm: denying open of %s", buf);
+            bpf_printk("file_open: denying open of %s", buf);
             return -EPERM;
         }
     }
 
     // Default: allow
+    return 0;
+}
+
+
+
+SEC("lsm.s/socket_connect")
+int BPF_PROG(block_telnet_connect, struct socket *sock, struct sockaddr *address, int addrlen)
+{
+    struct sockaddr_in *addr = (struct sockaddr_in *)address;
+    if (addr->sin_family == AF_INET) {
+        // Convert port from network to host byte order
+        if (__builtin_bswap16(addr->sin_port) == 23) {
+            bpf_printk("socket_connect: Blocking connection in port 23 \n");
+            return -EPERM;
+        }
+    }
     return 0;
 }
 

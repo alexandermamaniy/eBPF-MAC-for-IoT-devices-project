@@ -1,0 +1,1 @@
+{"bpf_skel":{"data_sections":[],"maps":[{"ident":"rodata","name":"busybox_.rodata"}],"obj_name":"busybox_bpf","progs":[{"attach":"kprobe/do_execveat_common","link":true,"name":"capture_execve"}]},"eunomia_version":"0.3.4"}

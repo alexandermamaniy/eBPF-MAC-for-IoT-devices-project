@@ -1,0 +1,1 @@
+{"bpf_skel":{"data_sections":[{"name":".rodata","variables":[{"name":"allowed_ips","type":"__u32[4]"},{"name":"allowed_ips_count","type":"int"}]}],"maps":[{"ident":"rodata","mmaped":true,"name":"socket_c.rodata"}],"obj_name":"socket_connection_bpf","progs":[{"attach":"lsm/socket_connect","link":true,"name":"restrict_connect"}]},"eunomia_version":"0.3.4"}
