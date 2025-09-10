@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script demonstrates how to create and mount various file systems in Linux.
+# This script creates and mounts various file systems in Linux.
 
 
 rm /tmp/*.img 2>/dev/null

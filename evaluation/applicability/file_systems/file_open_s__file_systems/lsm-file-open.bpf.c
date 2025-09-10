@@ -8,6 +8,7 @@ char LICENSE[] SEC("license") = "GPL";
 #define EPERM 1
 #define MAX_PATH_LEN 256
 
+// Define the paths that are restricted
 const char restricted_paths[][MAX_PATH_LEN] = {
     "/mnt/cramfs/restricted.txt",
     "/mnt/jffs2/restricted.txt",
@@ -15,7 +16,7 @@ const char restricted_paths[][MAX_PATH_LEN] = {
     "/mnt/squashfs/restricted.txt",
     "/mnt/tmpfs/restricted.txt"
 };
-
+// Define the paths that are not restricted
 const char unrestricted_paths[][MAX_PATH_LEN] = {
     "/mnt/cramfs/unrestricted.txt",
     "/mnt/jffs2/unrestricted.txt",
@@ -25,6 +26,10 @@ const char unrestricted_paths[][MAX_PATH_LEN] = {
 };
 
 #define NUM_PATHS 5
+
+// LSM hook that denies file open operations on restricted paths
+// If the path is in unrestricted paths, allow the operation
+// If the path is in restricted paths, deny the operation
 
 SEC("lsm.s/file_open")
 int BPF_PROG(deny_file_open, struct file *file)
@@ -40,7 +45,6 @@ int BPF_PROG(deny_file_open, struct file *file)
 #pragma unroll
     for (int i = 0; i < NUM_PATHS; i++) {
         if (__builtin_memcmp(buf, unrestricted_paths[i], __builtin_strlen(unrestricted_paths[i])) == 0) {
-            // Explicitly allow
             return 0;
         }
     }
@@ -52,7 +56,5 @@ int BPF_PROG(deny_file_open, struct file *file)
             return -EPERM;
         }
     }
-
-    // Default: allow
     return 0;
 }

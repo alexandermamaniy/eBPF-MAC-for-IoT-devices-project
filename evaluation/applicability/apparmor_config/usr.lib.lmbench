@@ -1,0 +1,22 @@
+#include <tunables/global>
+
+# AppArmor profile for lmbench
+
+/usr/lib/lmbench/bin/** {
+  # — Files —
+  /usr/lib/lmbench/bin/** rwmkl,             # read, write, create, change attributes
+  /**			  rwmkl,	                 # Access to rest of the File System
+  # — Execution —
+  # /**        ix,                           # Allows to execute any binary
+
+  # — Network —
+  network inet tcp,                          # Bind INET/TCP sockets
+  network unix stream,
+
+  # — Capability —
+  capability,
+
+  # — Auditing file and network
+  # audit file,
+  # audit network,
+}

@@ -1,1 +1,0 @@
-{"bpf_skel":{"data_sections":[],"maps":[{"ident":"marked_inodes","name":"marked_inodes"},{"ident":"rodata","name":"block_ex.rodata"}],"obj_name":"block_execution_files_download_by_wget_bpf","progs":[{"attach":"lsm.s/file_open","link":true,"name":"mark_wget_inodes"},{"attach":"lsm.s/bprm_check_security","link":true,"name":"block_marked_exec"}]},"eunomia_version":"0.3.4"}
