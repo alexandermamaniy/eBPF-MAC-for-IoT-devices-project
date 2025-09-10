@@ -1,1 +1,0 @@
-{"bpf_skel":{"data_sections":[],"maps":[{"ident":"rodata","name":"file_chm.rodata"},{"ident":"rodata_str1_1","name":".rodata.str1.1"}],"obj_name":"file_chmod_bpf","progs":[{"attach":"lsm/path_chmod","link":true,"name":"my_chmod"}]},"eunomia_version":"0.3.4"}

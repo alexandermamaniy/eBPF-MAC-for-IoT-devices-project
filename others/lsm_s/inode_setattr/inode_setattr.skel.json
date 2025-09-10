@@ -1,1 +1,0 @@
-{"bpf_skel":{"data_sections":[],"maps":[{"ident":"rodata_str1_1","name":".rodata.str1.1"},{"ident":"rodata","name":"inode_se.rodata"}],"obj_name":"inode_setattr_bpf","progs":[{"attach":"lsm.s/inode_setattr","link":true,"name":"deny_chmod_by_path"}]},"eunomia_version":"0.3.4"}
