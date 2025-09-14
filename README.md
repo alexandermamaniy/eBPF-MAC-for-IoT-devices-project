@@ -3,8 +3,8 @@
 This repository contains the MSc research project that evaluates the feasibility of applying **Linux Security Module (LSM) BPF-based Mandatory Access Control (MAC)** in the kernel space to protect IoT devices against malware such as **Mirai**, while reducing system overhead and ensuring high availability in resource-constrained environments.
 
 ## Documentation
-- 📘 [Research PDF Report](documentation/researchProject.pdf) — Full research report.
-- 🛠️ [Configuration Manual Report](documentation/configManual.pdf) — Practical configuration and deployment guide.
+- [Research PDF Report](documentation/researchProject.pdf) — Full research report.
+- [Configuration Manual Report](documentation/configManual.pdf) — Practical configuration and deployment guide.
 
 ## Project Objectives
 - Assess the applicability of **LSM BPF** on IoT devices compared to traditional MAC systems (AppArmor, SELinux, TOMOYO, Smack).
